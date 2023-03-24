@@ -6,15 +6,15 @@ CREATE TABLE users (
     firstname VARCHAR(30),
     lastname VARCHAR(30),
     age INT(2),
-    is_student BOOL
+    is_student BOOLEAN
 );
 
 CREATE TABLE admins (
-    id INT(11)
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY
 );
 
 CREATE TABLE cinemas (
-    id INT(11),
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30),
     address VARCHAR(70),
     opening_time TIME,
@@ -22,20 +22,20 @@ CREATE TABLE cinemas (
 );
 
 CREATE TABLE rooms (
-    id INT(11),
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30),
     nber_seats INT(3),
     cinema_name VARCHAR(30)
 );
 
 CREATE TABLE sessions (
-    id INT(11),
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date DATE,
     movie_title VARCHAR(30)
 );
 
 CREATE TABLE movies (
-    id INT(11),
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30),
     year DATE,
     duration TIME,
@@ -43,25 +43,28 @@ CREATE TABLE movies (
     main_actor VARCHAR(30),
     description TEXT(500),
     genre VARCHAR(20),
-    current_week BOOL
+    current_week BOOLEAN
 );
 
 CREATE TABLE payments (
-    id INT(11),
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     total FLOAT,
-    is_onsite BOOL
+    is_onsite BOOLEAN
 );
 
 CREATE TABLE online_payments (
-    id INT(11),
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     payment_method VARCHAR(10)
 );
 
 CREATE TABLE tickets (
-    id INT(11),
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date DATE,
     movie_name VARCHAR(30),
     room INT(2),
     price FLOAT,
-    is_used BOOL
+    is_used BOOLEAN,
+    pays_for INT(11) NOT NULL,
+    FOREIGN KEY (pays_for) REFERENCES users(id)
+
 );
