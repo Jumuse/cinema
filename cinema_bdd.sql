@@ -49,7 +49,6 @@ CREATE TABLE rooms (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
     nber_seats INT(3) NOT NULL,
-    cinema_name VARCHAR(30) NOT NULL,
     /*One to many association between cinemas_admin and rooms*/
     possesses INT(11) NOT NULL,
     FOREIGN KEY(possesses) REFERENCES cinemas_admin(admin_id)
@@ -58,8 +57,6 @@ CREATE TABLE rooms (
 CREATE TABLE tickets (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date DATE NOT NULL,
-    movie_name VARCHAR(30),
-    room INT(2) NOT NULL,
     price FLOAT NOT NULL,
     is_used BOOLEAN NOT NULL,
     /*One to Many association between customers and tickets*/
@@ -329,3 +326,134 @@ Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscip
 Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.', 'Crime|Drama|Fantasy|Thriller', false);
 insert into movies (id, title, date, duration, director, main_actor, description, genre, current_week) values (39, 'In My Father''s Den', '2022-06-11', 73, 'Malory Kleinerman', 'Lorettalorna Gonnelly', 'Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.', 'Drama', false);
 insert into movies (id, title, date, duration, director, main_actor, description, genre, current_week) values (40, 'Tokyo-Ga', '2022-08-23', 81, 'Sorcha Scardefield', 'Lezley Spinney', 'In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.', 'Documentary', false);
+
+/*data insertion for cinemas_admin*/
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (1, 'Cruickshank-Runolfsson', '76 Lakeland Drive', '1:52', '12:58');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (2, 'Littel-Towne', '72665 Bonner Center', '5:42', '16:51');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (3, 'Runolfsdottir-Graham', '6 Mcguire Terrace', '23:55', '1:53');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (4, 'Steuber LLC', '897 Anniversary Court', '22:04', '7:49');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (5, 'Pouros, Cormier and Medhurst', '22 Duke Point', '7:49', '2:29');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (6, 'Champlin Inc', '1492 Pepper Wood Junction', '20:06', '6:46');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (7, 'Reilly, Schimmel and Kulas', '7 Brentwood Circle', '13:59', '12:50');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (8, 'Boyer-Greenholt', '29 Hollow Ridge Point', '0:47', '22:28');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (9, 'Dickinson, Blanda and Marquardt', '18 Kipling Street', '22:55', '12:39');
+insert into cinemas_admin (admin_id, name, address, opening_time, closing_time) values (10, 'Harvey and Sons', '65358 Buena Vista Hill', '16:26', '21:20');
+
+/*data insertion for customers*/
+INSERT INTO customers(users_id, watches) VALUES (1, 11);
+INSERT INTO customers(users_id, watches) VALUES (2, 20);
+INSERT INTO customers(users_id, watches) VALUES (3, 5);
+INSERT INTO customers(users_id, watches) VALUES (4, 6);
+INSERT INTO customers(users_id, watches) VALUES (5, 20);
+INSERT INTO customers(users_id, watches) VALUES (6, 2);
+INSERT INTO customers(users_id, watches) VALUES (9, 11);
+INSERT INTO customers(users_id, watches) VALUES (10, 3);
+INSERT INTO customers(users_id, watches) VALUES (11, 25);
+INSERT INTO customers(users_id, watches) VALUES (12, 25);
+INSERT INTO customers(users_id, watches) VALUES (13, 31);
+INSERT INTO customers(users_id, watches) VALUES (14, 2);
+INSERT INTO customers(users_id, watches) VALUES (15, 21);
+
+/*data insertion for rooms*/
+insert into rooms (id, name, nber_seats, possesses) values (1, 'Jay', 22, 1);
+insert into rooms (id, name, nber_seats, possesses) values (2, 'Dunning', 48, 1);
+insert into rooms (id, name, nber_seats, possesses) values (3, 'Rowland', 74, 2);
+insert into rooms (id, name, nber_seats, possesses) values (4, '5th', 40, 2);
+insert into rooms (id, name, nber_seats, possesses) values (5, 'Milwaukee', 14, 3);
+insert into rooms (id, name, nber_seats, possesses) values (6, 'Melby', 30, 4);
+insert into rooms (id, name, nber_seats, possesses) values (7, 'Vera', 45, 4);
+insert into rooms (id, name, nber_seats, possesses) values (8, 'Kingsford', 19, 4);
+insert into rooms (id, name, nber_seats, possesses) values (9, '2nd', 93, 5);
+insert into rooms (id, name, nber_seats, possesses) values (10, 'Elmside', 32, 5);
+insert into rooms (id, name, nber_seats, possesses) values (11, 'Old Shore', 57, 6);
+insert into rooms (id, name, nber_seats, possesses) values (12, 'Graceland', 49, 6);
+insert into rooms (id, name, nber_seats, possesses) values (13, 'Heffernan', 28, 7);
+insert into rooms (id, name, nber_seats, possesses) values (14, 'Riverside', 10, 7);
+insert into rooms (id, name, nber_seats, possesses) values (15, 'Cottonwood', 89, 7);
+insert into rooms (id, name, nber_seats, possesses) values (16, 'Algoma', 49, 8);
+insert into rooms (id, name, nber_seats, possesses) values (17, 'Everett', 31, 8);
+insert into rooms (id, name, nber_seats, possesses) values (18, 'Loomis', 93, 9);
+insert into rooms (id, name, nber_seats, possesses) values (19, 'Menomonie', 67, 10);
+insert into rooms (id, name, nber_seats, possesses) values (20, 'Ridge Oak', 17, 10);
+
+/*data insertion for tickets*/
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (1, '2022-05-26 17:14:09', 8.74, true, 1, 1);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (2, '2022-06-28 09:16:38', 8.37, true, 2, 2);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (3, '2023-02-11 22:25:10', 3.27, false, 3, 3);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (4, '2022-10-21 12:07:18', 12.88, true, 4, 4);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (5, '2022-06-08 04:11:34', 15.79, false, 5, 5);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (6, '2022-10-19 08:01:00', 4.42, false, 6, 6);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (7, '2022-09-01 19:38:12', 4.16, true, 7, 7);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (8, '2022-07-01 12:19:56', 14.77, false, 8, 8);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (9, '2022-10-12 16:21:56', 9.96, false, 9, 9);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (10, '2023-01-05 16:05:40', 9.96, false, 10, 10);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (11, '2023-01-29 23:25:27', 11.88, true, 11, 11);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (12, '2022-04-20 22:13:14', 1.4, true, 12, 12);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (13, '2022-10-02 08:13:04', 5.92, true, 13, 13);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (14, '2022-11-27 04:56:23', 17.62, false, 14, 14);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (15, '2023-01-31 20:56:41', 12.42, false, 15, 15);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (16, '2022-12-07 02:50:47', 10.15, true, 16, 16);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (17, '2023-03-24 03:17:16', 19.7, false, 17, 17);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (18, '2022-07-09 22:49:21', 18.1, false, 18, 18);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (19, '2022-12-22 22:59:52', 9.57, true, 19, 19);
+insert into tickets (id, date, price, is_used, pays_for, books_a) values (20, '2022-08-10 08:15:26', 19.56, false, 20, 20);
+
+/*data insertion for payments*/
+insert into payments (tickets_id, customers_id, total, is_onsite) values (1, 1, 18.37, false);
+insert into payments (tickets_id, customers_id, total, is_onsite) values (2, 2, 7.24, true);
+insert into payments (tickets_id, customers_id, total, is_onsite) values (3, 3, 19.48, true);
+insert into payments (tickets_id, customers_id, total, is_onsite) values (4, 4, 12.33, true);
+insert into payments (tickets_id, customers_id, total, is_onsite) values (5, 5, 2.64, true);
+insert into payments (tickets_id, customers_id, total, is_onsite) values (6, 6, 17.98, false);
+insert into payments (tickets_id, customers_id, total, is_onsite) values (7, 7, 4.44, true);
+
+/*data insertion for is_displayed*/
+insert into is_displayed (rooms_id, sessions_id) values (1, 1);
+insert into is_displayed (rooms_id, sessions_id) values (2, 2);
+insert into is_displayed (rooms_id, sessions_id) values (3, 3);
+insert into is_displayed (rooms_id, sessions_id) values (4, 4);
+insert into is_displayed (rooms_id, sessions_id) values (5, 5);
+insert into is_displayed (rooms_id, sessions_id) values (6, 6);
+insert into is_displayed (rooms_id, sessions_id) values (7, 7);
+insert into is_displayed (rooms_id, sessions_id) values (8, 8);
+insert into is_displayed (rooms_id, sessions_id) values (9, 9);
+insert into is_displayed (rooms_id, sessions_id) values (10, 10);
+insert into is_displayed (rooms_id, sessions_id) values (11, 11);
+insert into is_displayed (rooms_id, sessions_id) values (12, 12);
+insert into is_displayed (rooms_id, sessions_id) values (13, 13);
+insert into is_displayed (rooms_id, sessions_id) values (14, 14);
+insert into is_displayed (rooms_id, sessions_id) values (15, 15);
+insert into is_displayed (rooms_id, sessions_id) values (16, 16);
+insert into is_displayed (rooms_id, sessions_id) values (17, 17);
+insert into is_displayed (rooms_id, sessions_id) values (18, 18);
+insert into is_displayed (rooms_id, sessions_id) values (19, 19);
+insert into is_displayed (rooms_id, sessions_id) values (20, 20);
+
+/*data insertion for programmed*/
+insert into programmed (movies_id, sessions_id) values (1, 1);
+insert into programmed (movies_id, sessions_id) values (2, 2);
+insert into programmed (movies_id, sessions_id) values (3, 3);
+insert into programmed (movies_id, sessions_id) values (4, 4);
+insert into programmed (movies_id, sessions_id) values (5, 5);
+insert into programmed (movies_id, sessions_id) values (6, 6);
+insert into programmed (movies_id, sessions_id) values (7, 7);
+insert into programmed (movies_id, sessions_id) values (8, 8);
+insert into programmed (movies_id, sessions_id) values (9, 9);
+insert into programmed (movies_id, sessions_id) values (10, 10);
+
+/*data insertion for changes_to_movies*/
+insert into changes_to_movies (movies_id, admin_id) values (1, 1);
+insert into changes_to_movies (movies_id, admin_id) values (2, 2);
+insert into changes_to_movies (movies_id, admin_id) values (3, 3);
+insert into changes_to_movies (movies_id, admin_id) values (4, 4);
+insert into changes_to_movies (movies_id, admin_id) values (5, 5);
+insert into changes_to_movies (movies_id, admin_id) values (6, 6);
+insert into changes_to_movies (movies_id, admin_id) values (7, 7);
+insert into changes_to_movies (movies_id, admin_id) values (8, 8);
+insert into changes_to_movies (movies_id, admin_id) values (9, 9);
+insert into changes_to_movies (movies_id, admin_id) values (10, 10);
+insert into changes_to_movies (movies_id, admin_id) values (11, 11);
+insert into changes_to_movies (movies_id, admin_id) values (12, 12);
+insert into changes_to_movies (movies_id, admin_id) values (13, 13);
+insert into changes_to_movies (movies_id, admin_id) values (14, 14);
+insert into changes_to_movies (movies_id, admin_id) values (15, 15);
