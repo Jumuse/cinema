@@ -9,13 +9,6 @@ CREATE TABLE users (
     is_student BOOLEAN
 );
 
-CREATE TABLE rooms (
-    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
-    nber_seats INT(3) NOT NULL,
-    cinema_name VARCHAR(30) NOT NULL
-);
-
 CREATE TABLE sessions (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     date_time DATE NOT NULL,
@@ -44,12 +37,23 @@ CREATE TABLE customers (
 );
 
 CREATE TABLE cinemas_admin (
-    /*fusion between 'admin and cinemas'*/
-    admin_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    /*fusion between admin and cinemas + inheritence between users and admin*/
+    admin_id INT(11) NOT NULL  PRIMARY KEY,
+    FOREIGN KEY(admin_id) REFERENCES users(id),
     name VARCHAR(30) NOT NULL,
     address VARCHAR(70) NOT NULL,
     opening_time TIME NOT NULL,
     closing_time TIME NOT NULL
+);
+
+CREATE TABLE rooms (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    nber_seats INT(3) NOT NULL,
+    cinema_name VARCHAR(30) NOT NULL,
+    /*One to many association between cinemas_admin and rooms*/
+    possesses INT(11) NOT NULL,
+    FOREIGN KEY(possesses) REFERENCES cinemas_admin(admin_id)
 );
 
 CREATE TABLE tickets (
@@ -67,8 +71,8 @@ CREATE TABLE tickets (
     FOREIGN KEY (books_a) REFERENCES sessions(id)
 );
 
+/*associative table between customers and tickets*/
 CREATE TABLE payments (
-    /*associative table between customers and tickets*/
     tickets_id INT(11) NOT NULL,
     customers_id INT(11) NOT NULL,
     PRIMARY KEY (customers_id, tickets_id),
@@ -76,4 +80,31 @@ CREATE TABLE payments (
     FOREIGN KEY (tickets_id) REFERENCES tickets(id),
     total FLOAT NOT NULL,
     is_onsite BOOLEAN NOT NULL
+);
+
+/*associative table between rooms and sessions*/
+CREATE TABLE is_displayed (
+    rooms_id INT(11) NOT NULL,
+    sessions_id INT(11) NOT NULL,
+    PRIMARY KEY (sessions_id, rooms_id),
+    FOREIGN KEY (rooms_id) REFERENCES rooms(id),
+    FOREIGN KEY (sessions_id) REFERENCES sessions(id)
+);
+
+/*associative table between movies and sessions*/
+CREATE TABLE programmed (
+  movies_id INT(11) NOT NULL,
+  sessions_id INT(11) NOT NULL,
+  PRIMARY KEY (sessions_id, movies_id),
+  FOREIGN KEY (movies_id) REFERENCES movies(id),
+  FOREIGN KEY (sessions_id) REFERENCES sessions(id)
+  );
+
+/*associative table between movies and admin*/
+CREATE TABLE changes_to_movies (
+   movies_id INT(11) NOT NULL,
+   admin_id INT(11) NOT NULL,
+   PRIMARY KEY (movies_id, admin_id),
+   FOREIGN KEY (movies_id) REFERENCES movies(id),
+   FOREIGN KEY (admin_id) REFERENCES cinemas_admin(admin_id)
 );
