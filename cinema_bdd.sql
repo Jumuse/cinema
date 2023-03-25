@@ -1,4 +1,4 @@
-CREATE DATABASE IF NOT EXISTS bdd_cinema;
+CREATE DATABASE IF NOT EXISTS bdd_cinema SET utf8mb4 COLLATE utf8mb4_general_ci;
 
 CREATE TABLE users (
     id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -32,12 +32,12 @@ CREATE TABLE customers (
     /*One to Many between customers and movies*/
     watches INT(11) NOT NULL,
     FOREIGN KEY (watches) REFERENCES movies(id),
-    /*heritance between users and customers*/
+    /*inheritance between users and customers*/
     FOREIGN KEY(users_id) REFERENCES users(id)
 );
 
 CREATE TABLE cinemas_admin (
-    /*fusion between admin and cinemas + inheritence between users and admin*/
+    /*fusion between admin and cinemas + inheritance between users and admin*/
     admin_id INT(11) NOT NULL  PRIMARY KEY,
     FOREIGN KEY(admin_id) REFERENCES users(id),
     name VARCHAR(30) NOT NULL,
