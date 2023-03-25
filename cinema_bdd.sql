@@ -108,3 +108,21 @@ CREATE TABLE changes_to_movies (
    FOREIGN KEY (movies_id) REFERENCES movies(id),
    FOREIGN KEY (admin_id) REFERENCES cinemas_admin(admin_id)
 );
+
+/*Index on movies*/
+ CREATE INDEX index_movies ON movies (
+    title, 
+    director,
+  	main_actor,
+  	year,
+  	genre
+);
+
+/*Index on users*/
+CREATE INDEX index_users ON users (
+  email,
+  firstname,
+  lastname,
+  age,
+  is_student
+);
