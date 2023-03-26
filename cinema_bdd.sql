@@ -3,6 +3,7 @@ CREATE DATABASE IF NOT EXISTS theater SET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE TABLE users (
     id CHAR(36) NOT NULL PRIMARY KEY,
     email VARCHAR(40) NOT NULL,
+    password BINARY(60) NOT NULL,
     firstname VARCHAR(30),
     lastname VARCHAR(30) NOT NULL,
     age INT(2) NOT NULL,
@@ -126,17 +127,17 @@ CREATE INDEX index_users ON users (
 );
 
 /*data insertion for users*/
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('25551c9c-4554-4bd6-8437-fe941d93f982', 'ibrandrick0@yellowbook.com', 'Irita', 'Brandrick', 13, true, false);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('15f81aa4-0d84-434a-ad5d-3b7ecee5bda8', 'colivier1@reuters.com', 'Cullie', 'Olivier', 56, true, false);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('0c50a75e-0df7-40af-a1c9-dd6d2c487eb6', 'dhobbema2@about.me', 'Dolly', 'Hobbema', 97, true, true);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('86eb682a-6b4a-42d0-bf50-37557e018c56', 'ffranzschoninger3@yellowpages.com', 'Forest', 'Franz-Schoninger', 65, true, true);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('3484230a-f7d7-4f48-8a6c-6b802fc19343', 'mberendsen4@pen.io', 'Michelina', 'Berendsen', 19, true, false);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('cda13f42-29d5-49ae-8be3-0864952379a0', 'rstefi5@sfgate.com', 'Ronni', 'Stefi', 67, true, false);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('1b96980c-048e-406f-a573-45fd15d9066a ', 'kdory0@alibaba.com', 'Kenneth', 'Dory', 75, false, false);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('f57402b8-acb7-4976-af9c-93ee6e33184f', 'ccattermoul1@geocities.com', 'Christopher', 'Cattermoul', 62, false, false);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('33356763-db48-4426-b51f-eba4003ad847', 'psedgemore2@e-recht24.de', 'Parker', 'Sedgemore', 55, false, false);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('9488f60c-4138-4cba-8fa6-39c443eefbab', 'jrotge3@rediff.com', 'Janelle', 'Rotge', 30, false, true);
-insert into users (id, email, firstname, lastname, age, is_admin, is_student) values ('56d7e6a2-29ca-400e-a345-c00c07ac8f0c', 'rsavill4@apache.org', 'Rolph', 'Savill', 70, false, false);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('25551c9c-4554-4bd6-8437-fe941d93f982', 'ibrandrick0@yellowbook.com', '$2y$10$cevT3qzIRNWKPTWTOeemteuLeCTdz6IdlodI3cCUnd18zASF.jKRq', 'Irita', 'Brandrick', 13, true, false);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('15f81aa4-0d84-434a-ad5d-3b7ecee5bda8', 'colivier1@reuters.com', '$2y$10$TUyXV7ss4TxCQjoLHv8sZOLjc8PHYd8d4MsgT56jEOkvm5UOeF3VS', 'Cullie', 'Olivier', 56, true, false);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('0c50a75e-0df7-40af-a1c9-dd6d2c487eb6', 'dhobbema2@about.me', '$2y$10$9I7KficnaWXNA1.RW6MKPOWUNX5XJ7AfZ6OzGQZQvZMOf37ezdANe', 'Dolly', 'Hobbema', 97, true, true);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('86eb682a-6b4a-42d0-bf50-37557e018c56', 'ffranzschoninger3@yellowpages.com', '$2y$10$r4oDcK.2zj6M5yH6vl2tDemeJnnx8mjBUGdCn71pDZz8KloLDReye', 'Forest', 'Franz-Schoninger', 65, true, true);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('3484230a-f7d7-4f48-8a6c-6b802fc19343', 'mberendsen4@pen.io', '$2y$10$JcYzKRVzoIo/eXm/wZtXhu.5piUcp96g8.gb96jHAKM11F8YjX84W', 'Michelina', 'Berendsen', 19, true, false);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('cda13f42-29d5-49ae-8be3-0864952379a0', 'rstefi5@sfgate.com', '$2y$10$dnxt7thcDAEeVBEouvG6fO58xbErQRqOApX5aorst0SCVwuhXRtlK', 'Ronni', 'Stefi', 67, true, false);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('1b96980c-048e-406f-a573-45fd15d9066a ', 'kdory0@alibaba.com', '$2y$10$hE6OWmLlQtI1KH10Qzgr2O8cOYmF90LmZDFCgsbFZrhpbNeqRzeOu', 'Kenneth', 'Dory', 75, false, false);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('f57402b8-acb7-4976-af9c-93ee6e33184f', 'ccattermoul1@geocities.com', '$2y$10$IWlPZYIZO0PzPw2u8wQtB.2S46kdhTSXJzzau.WjUHXZxS1wSGVGK', 'Christopher', 'Cattermoul', 62, false, false);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('33356763-db48-4426-b51f-eba4003ad847', 'psedgemore2@e-recht24.de', '$2y$10$1BwbmZOvG.rl2Gii76G8zuohuBTqeSrClaNm3nQAL4GQRK1hYldo6', 'Parker', 'Sedgemore', 55, false, false);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('9488f60c-4138-4cba-8fa6-39c443eefbab', 'jrotge3@rediff.com', '$2y$10$EQAbSgGXmEl1EUL.Q3hKsO8eyhnrLkK.D9eHKahYrWPXGWHATW1rC', 'Janelle', 'Rotge', 30, false, true);
+insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('56d7e6a2-29ca-400e-a345-c00c07ac8f0c', 'rsavill4@apache.org', '$2y$10$o/wm9jDoR2rshyVBXJzxeedaIiYY/ST5ZueUjxOxMDnX7I3Vx9bCm', 'Rolph', 'Savill', 70, false, false);
 
 
 /*data insertion for sessions*/
