@@ -126,6 +126,13 @@ CREATE INDEX index_users ON users (
   is_student
 );
 
+/*Creation of two types of users : admin (full rights) and regular_user (viewer)*/
+CREATE USER 'admin_bdd'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'admin_bdd'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'regular_user'@'localhost' IDENTIFIED BY 'password';
+GRANT SELECT ON *.movies TO 'regular_user'@'localhost';
+
 /*data insertion for users*/
 insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('25551c9c-4554-4bd6-8437-fe941d93f982', 'ibrandrick0@yellowbook.com', '$2y$10$cevT3qzIRNWKPTWTOeemteuLeCTdz6IdlodI3cCUnd18zASF.jKRq', 'Irita', 'Brandrick', 13, true, false);
 insert into users (id, email, password, firstname, lastname, age, is_admin, is_student) values ('15f81aa4-0d84-434a-ad5d-3b7ecee5bda8', 'colivier1@reuters.com', '$2y$10$TUyXV7ss4TxCQjoLHv8sZOLjc8PHYd8d4MsgT56jEOkvm5UOeF3VS', 'Cullie', 'Olivier', 56, true, false);
